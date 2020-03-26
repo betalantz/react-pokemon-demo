@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const PokemonTeamLounge = styled.div`
+const PokeTeamLounge = styled.div`
     border: 3px solid red;
     border-radius: 10px;
     background: #fffff0;
     margin: 10px;
-    padding: 10px;  
+    padding: 10px;
 `
 
 const Card = styled.div`
@@ -17,10 +17,22 @@ const Card = styled.div`
     padding: 10px;
 `
 
+const NextButton = styled.button`
+    color: yellow;
+    background-color: red;
+    font-size: 2em;
+`
+
 const PokeButton = styled.button`
     color: yellow;
     background-color: red;
     font-size: 1em;
 `
 
-export { PokemonTeamLounge, Card, PokeButton }
+
+export {
+    PokeTeamLounge,
+    Card,
+    NextButton,
+    PokeButton
+}

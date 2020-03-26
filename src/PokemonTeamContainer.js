@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import { PokemonTeamLounge } from './Styles';
+import { PokeTeamLounge } from './Styles';
 import Pokemon from './Pokemon';
 
-class PokemonTeamContainer extends Component {
+class PokeTeamContainer extends Component {
     
-    renderPokeCards = () => {
-        return this.props.pokemons.map(p => {
-            return <Pokemon
-                sprite={p.sprite}
+    
+    renderPokemons = () => {
+
+        return this.props.pokemons.map(p => (
+            <Pokemon
+                id={p.id} 
                 key={p.id} 
                 name={p.name}
+                spriteURL={p.sprites.front_default}
                 buttonAction={"Remove"}
-                
-                />
-        })
+                buttonFunction={this.props.handleRemovePokemon}
+            />))
     }
     
     render() {
         return (
-            <PokemonTeamLounge>
-                {this.renderPokeCards()}
-            </PokemonTeamLounge>
+            <PokeTeamLounge >
+                <h1>Team Lounge</h1>
+                {this.renderPokemons()}
+            </PokeTeamLounge>
         );
     }
 }
 
-export default PokemonTeamContainer;
+export default PokeTeamContainer; // could be called anything because its default exp
