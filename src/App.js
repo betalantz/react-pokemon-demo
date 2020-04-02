@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css'
 import PokeTeamContainer from './PokemonTeamContainer';
 import PokePoolContainer from './PokemonPoolContainer';
+import SearchPokemon from './SearchPokemon';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 class App extends Component {
 
@@ -34,10 +36,24 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
-        <PokeTeamContainer pokemons={this.state.pokemonTeam} handleRemovePokemon={this.handleRemovePokemon}/>
-        <PokePoolContainer handleAddPokemon={this.handleAddPokemon}/>
-      </div>
+      <Router>
+        <div className="App">
+          <PokeTeamContainer pokemons={this.state.pokemonTeam} handleRemovePokemon={this.handleRemovePokemon}/>
+
+          <Link to='/search'>Search</Link>
+          <br/>
+          <Link to='/'>Browse</Link>
+
+          <Switch>
+            <Route path='/search'>
+              <SearchPokemon handleAddPokemon={this.handleAddPokemon}/>
+            </Route>
+            <Route path='/'>
+              <PokePoolContainer handleAddPokemon={this.handleAddPokemon}/>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
