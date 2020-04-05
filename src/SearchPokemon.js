@@ -21,6 +21,10 @@ class SearchPokemon extends Component {
         }
     }
 
+    handleAdd = () => {
+        this.props.handleAddPokemon(this.state.pokemon)
+    }
+
     renderPokemon = () => {
         if (this.state.pokemon) {
             return <Pokemon
@@ -28,7 +32,7 @@ class SearchPokemon extends Component {
                 name={this.state.pokemon.name}
                 spriteURL={this.state.pokemon.sprites.front_default}
                 buttonAction={'Choose'}
-                buttonFunction={this.props.handleAddPokemon}
+                buttonFunction={this.handleAdd}
             />
         }
     }
