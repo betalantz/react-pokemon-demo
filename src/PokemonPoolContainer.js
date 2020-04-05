@@ -43,9 +43,15 @@ class PokemonPoolContainer extends Component {
                 key={p.id} 
                 name={p.name}
                 buttonAction={"Choose"}
-                handleAddPoke={this.props.handleAddPoke}
+                buttonFunction={this.choosePokemon}
+                id={p.id}
                 />
         })
+    }
+
+    choosePokemon = (id) => {
+        const chosenPokemon = this.state.pokemons.find(p => p.id == id)
+        this.props.handleAddPoke(chosenPokemon)
     }
 
 

@@ -7,11 +7,12 @@ class PokemonTeamContainer extends Component {
     renderPokeCards = () => {
         return this.props.pokemons.map(p => {
             return <Pokemon
-                sprite={p.sprite}
+                sprite={p.sprites.front_default}
                 key={p.id} 
                 name={p.name}
                 buttonAction={"Remove"}
-                
+                buttonFunction={this.props.handleRemovePokemon}
+                id={p.id}
                 />
         })
     }
