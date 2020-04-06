@@ -1,18 +1,21 @@
-import React from 'react';
-import {Card, PokeButton} from './Styles';
+import React, { Component } from 'react';
+import { Card, PokeButton } from './Styles';
 
-const Pokemon = (props) => {
-
-    const handleClick = (e) => {
-        props.buttonFunction(props.id)
+class Pokemon extends Component {
+    
+    handleClick = (e) => {
+        this.props.buttonFunction(this.props.id)
     }
-    return (
-        <Card>
-            <h2>{props.name}</h2>
-            <img src={props.sprite}></img>
-            <PokeButton onClick={handleClick}>{props.buttonAction}</PokeButton>
-        </Card>
-    );
+
+    render() {
+        return (
+            <Card>
+                <h2>{this.props.name}</h2>
+                <img src={this.props.spriteURL} alt={this.props.name} />
+                <PokeButton onClick={this.handleClick}>{this.props.buttonAction}</PokeButton>
+            </Card>
+        );
+    }
 }
 
 export default Pokemon;

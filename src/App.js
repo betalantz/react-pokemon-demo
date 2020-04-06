@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import PokemonTeamContainer from './PokemonTeamContainer';  
-import PokemonPoolContainer from './PokemonPoolContainer';
-import './App.css';
+import './App.css'
+import PokeTeamContainer from './PokemonTeamContainer';
+import PokePoolContainer from './PokemonPoolContainer';
+import SearchPokemon from './SearchPokemon';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 class App extends Component {
-  
+
   constructor(props) {
     super(props);
     
@@ -12,16 +14,16 @@ class App extends Component {
       pokemonTeam: []
     }
   }
-  
-  handleAddPoke = (pokeObj) => {
-    if (!this.teamIsFull()) {
+
+  handleAddPokemon = (pokeObj) => {
+    if (!this.teamIsFull()){
       this.setState({
         pokemonTeam: [...this.state.pokemonTeam, pokeObj]
       })
     }
   }
 
-  handleRemovePoke = (pId) => {
+  handleRemovePokemon = (pId) => {
     const newTeam = this.state.pokemonTeam.filter(p => p.id !== pId)
     this.setState({
       pokemonTeam: newTeam
@@ -33,12 +35,25 @@ class App extends Component {
   }
   
   render() {
-    // console.log(this.state.pokemonTeam)
     return (
-      <div>
-        <PokemonTeamContainer pokemons={this.state.pokemonTeam} handleRemovePokemon={this.handleRemovePoke}/>
-        <PokemonPoolContainer handleAddPoke={this.handleAddPoke}/>
-      </div>
+      <Router>
+        <div className="App">
+          <PokeTeamContainer pokemons={this.state.pokemonTeam} handleRemovePokemon={this.handleRemovePokemon}/>
+
+          <Link to='/search'>Search</Link>
+          <br/>
+          <Link to='/'>Browse</Link>
+
+          <Switch>
+            <Route path='/search'>
+              <SearchPokemon handleAddPokemon={this.handleAddPokemon}/>
+            </Route>
+            <Route path='/'>
+              <PokePoolContainer handleAddPokemon={this.handleAddPokemon}/>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
