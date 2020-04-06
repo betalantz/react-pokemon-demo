@@ -20,6 +20,7 @@ class PokemonTeamContainer extends Component {
     render() {
         return (
             <PokemonTeamLounge>
+                <h1>Team Lounge</h1>
                 {this.renderPokeCards()}
             </PokemonTeamLounge>
         );

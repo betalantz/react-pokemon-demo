@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PokemonTeamContainer from './PokemonTeamContainer';  
 import PokemonPoolContainer from './PokemonPoolContainer';
+import './App.css';
 
 class App extends Component {
   
@@ -13,9 +14,11 @@ class App extends Component {
   }
   
   handleAddPoke = (pokeObj) => {
-    this.setState({
-      pokemonTeam: [...this.state.pokemonTeam, pokeObj]
-    })
+    if (!this.teamIsFull()) {
+      this.setState({
+        pokemonTeam: [...this.state.pokemonTeam, pokeObj]
+      })
+    }
   }
 
   handleRemovePoke = (pId) => {
@@ -23,6 +26,10 @@ class App extends Component {
     this.setState({
       pokemonTeam: newTeam
     })
+  }
+
+  teamIsFull = () => {
+    return this.state.pokemonTeam.length >= 6
   }
   
   render() {

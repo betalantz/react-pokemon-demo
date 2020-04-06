@@ -23,4 +23,10 @@ const PokeButton = styled.button`
     font-size: 1em;
 `
 
-export { PokemonTeamLounge, Card, PokeButton }
+const NextButton = styled.button`
+    color: yellow;
+    background-color: red;
+    font-size: 2em;
+`
+
+export { PokemonTeamLounge, Card, PokeButton, NextButton }
